@@ -2,6 +2,8 @@
 
 A RAG (Retrieval-Augmented Generation) chatbot that lets you ask questions in natural language over your internal markdown documentation. Answers are grounded in ingested docs and include clickable citations with inline previews.
 
+URL: [https://docs-copilot.vercel.app/](https://docs-copilot.vercel.app/)
+
 ![image](./img/demo1.png)
 
 ## Features
@@ -21,6 +23,7 @@ A RAG (Retrieval-Augmented Generation) chatbot that lets you ask questions in na
 | **Vector store** | [Pinecone](https://www.pinecone.io/) — 384 dimensions, cosine similarity |
 | **File storage** | [AWS S3](https://aws.amazon.com/s3/) — uploaded markdown files |
 | **Chunking** | [LangChain](https://langchain.com/) — `MarkdownTextSplitter` (chunk size 1200, overlap 200) with per-chunk heading path metadata (e.g. "Known Errors > 409 Conflict") for section-aware retrieval and citations |
+| **Hosting** | [Vercel](https://vercel.com/) — serverless deployment |
 
 ## Ingesting documents
 
