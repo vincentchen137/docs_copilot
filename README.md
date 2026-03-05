@@ -41,6 +41,33 @@ Documents are split with LangChain’s **MarkdownTextSplitter** so boundaries re
 - **Heading path:** The nearest heading(s) above the chunk are stored as metadata (e.g. `Known Errors > 409 Conflict`). This is used to label context in the chat and to show section-aware citations.
 - **Line range:** Start and end line numbers in the source file for precise citation and “View” links.
 
+## Running Locally
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000). Use **Home** to chat and **Documents** to ingest and list files.
+
+## Environment variables
+
+Copy `.env.example` to `.env.local` and fill in your keys. Required for local dev and for Vercel.
+
+| Variable | Description |
+|----------|--------------|
+| `HUGGINGFACE_API_KEY` | Hugging Face token (embeddings; used by ingest + retrieval) |
+| `HUGGINGFACE_EMBEDDING_MODEL` | Optional. Default: `sentence-transformers/all-MiniLM-L6-v2` (384 dims) |
+| `OPENROUTER_API_KEY` | OpenRouter API key (chat LLM) |
+| `OPENROUTER_CHAT_MODEL` | Optional. Default: `meta-llama/llama-3.2-3b-instruct:free` |
+| `PINECONE_API_KEY` | Pinecone API key |
+| `PINECONE_INDEX_NAME` | Pinecone index name (create index with dimension **384**) |
+| `PINECONE_CLOUD` | e.g. `aws` |
+| `PINECONE_REGION` | e.g. `us-east-1` |
+| `AWS_REGION` | AWS region for S3 (e.g. `us-east-1`) |
+| `AWS_ACCESS_KEY_ID` | IAM access key with S3 access |
+| `AWS_SECRET_ACCESS_KEY` | IAM secret key |
+| `DOCS_S3_BUCKET` | S3 bucket name for uploaded markdown files |
+
 ## Project structure
 
 ```
