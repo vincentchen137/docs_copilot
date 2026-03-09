@@ -8,6 +8,18 @@ export const runtime = "nodejs";
 export async function POST(req: NextRequest) {
   try {
     const formData = await req.formData();
+    const ingestPassword = process.env.INGEST_PASSWORD;
+    if (ingestPassword) {
+      const provided = formData.get("password");
+      const value = typeof provided === "string" ? provided : "";
+      if (value !== ingestPassword) {
+        return NextResponse.json(
+          { error: "Invalid or missing ingest password" },
+          { status: 401 }
+        );
+      }
+    }
+
     const file = formData.get("file");
 
     if (!(file instanceof File)) {

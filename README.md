@@ -67,6 +67,7 @@ Copy `.env.example` to `.env.local` and fill in your keys. Required for local de
 | `AWS_ACCESS_KEY_ID` | IAM access key with S3 access |
 | `AWS_SECRET_ACCESS_KEY` | IAM secret key |
 | `DOCS_S3_BUCKET` | S3 bucket name for uploaded markdown files |
+| `INGEST_PASSWORD` | If set, upload/ingest on the Documents page requires this password |
 
 ## Project structure
 
@@ -76,7 +77,8 @@ src/
 │   ├── api/
 │   │   ├── chat/        # POST: question → answer + citations
 │   │   ├── documents/   # GET: list S3 docs with view URLs
-│   │   └── ingest/     # POST: upload .md → S3 + Pinecone
+│   │   └── ingest/      # POST: upload .md → S3 + Pinecone
+│   │       └── verify/  # POST: verify ingest password (200/401)
 │   ├── documents/      # Documents page (ingest button + doc list)
 │   ├── layout.tsx      # Root layout with sidebar
 │   └── page.tsx        # Home (chat UI)
